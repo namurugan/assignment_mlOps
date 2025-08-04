@@ -1,0 +1,6 @@
+name: housing_project
+
+entry_points:
+  main:
+    parameters: {}
+    command: python housing.py

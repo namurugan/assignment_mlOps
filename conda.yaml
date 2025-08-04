@@ -1,0 +1,8 @@
+name: housing-env
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pandas
+  - scikit-learn
+  - mlflow
