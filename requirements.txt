@@ -1,8 +1,12 @@
 mlflow
 scikit-learn
 pandas
-numpy
-keras
-tensorflow
+#numpy
+#keras
+#tensorflow
 hyperopt
-dvc
+#dvc
+fastapi
+uvicorn
+joblib
+pydantic

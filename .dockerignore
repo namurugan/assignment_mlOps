@@ -1,0 +1,20 @@
+# Ignore data folder (usually large datasets)
+data/
+
+# Ignore MLflow artifacts and runs
+mlartifacts/
+mlruns/
+
+# Ignore notebooks (not needed in container)
+notebooks/
+
+# Ignore virtual env folder
+venv1/
+
+# Ignore version control files/folders
+.git
+.dvc
+.dvcignore
+
+# Ignore editor configs
+.vscode

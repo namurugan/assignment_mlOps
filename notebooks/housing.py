@@ -28,15 +28,9 @@ from sklearn.model_selection import train_test_split,GridSearchCV
 from sklearn.metrics import mean_squared_error
 from sklearn.datasets import fetch_california_housing
 
-housing=fetch_california_housing()
-print(housing)
 
-housing
-
-## Prepraing the dataset
-data=pd.DataFrame(housing.data,columns=housing.feature_names)
-data['Price']=housing.target
-
+processed_path = "D:/assignment_1/data/processed/california_housing_processed.csv"
+data = pd.read_csv(processed_path)
 data.head(10)
 
 """### Train test split, Model Hyperparameter Tuning,MLFLOW Experiments"""
