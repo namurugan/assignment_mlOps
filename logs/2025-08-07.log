@@ -1,0 +1,1550 @@
+2025-08-07 16:18:31,281 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:18:31,334 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:18:31,368 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:18:32,025 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:18:32,076 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:18:32,109 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:31:19,499 | INFO | REQUEST: GET http://localhost:8000/docs BODY: 
+2025-08-07 16:31:19,548 | INFO | RESPONSE: status_code=200 body=
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui.css">
+    <link rel="shortcut icon" href="https://fastapi.tiangolo.com/img/favicon.png">
+    <title>FastAPI - Swagger UI</title>
+    </head>
+    <body>
+    <div id="swagger-ui">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui-bundle.js"></script>
+    <!-- `SwaggerUIBundle` is now available on the page -->
+    <script>
+    const ui = SwaggerUIBundle({
+        url: '/openapi.json',
+    "dom_id": "#swagger-ui",
+"layout": "BaseLayout",
+"deepLinking": true,
+"showExtensions": true,
+"showCommonExtensions": true,
+oauth2RedirectUrl: window.location.origin + '/docs/oauth2-redirect',
+    presets: [
+        SwaggerUIBundle.presets.apis,
+        SwaggerUIBundle.SwaggerUIStandalonePreset
+        ],
+    })
+    </script>
+    </body>
+    </html>
+    
+2025-08-07 16:31:19,694 | INFO | REQUEST: GET http://localhost:8000/openapi.json BODY: 
+2025-08-07 16:31:19,739 | INFO | RESPONSE: status_code=200 body={'openapi': '3.1.0', 'info': {'title': 'FastAPI', 'version': '0.1.0'}, 'paths': {'/predict': {'post': {'summary': 'Predict', 'operationId': 'predict_predict_post', 'requestBody': {'content': {'application/json': {'schema': {'$ref': '#/components/schemas/HousingInput'}}}, 'required': True}, 'responses': {'200': {'description': 'Successful Response', 'content': {'application/json': {'schema': {}}}}, '422': {'description': 'Validation Error', 'content': {'application/json': {'schema': {'$ref': '#/components/schemas/HTTPValidationError'}}}}}}}, '/metrics': {'get': {'summary': 'Metrics Endpoint', 'description': 'Expose metrics in Prometheus format', 'operationId': 'metrics_endpoint_metrics_get', 'responses': {'200': {'description': 'Successful Response', 'content': {'application/json': {'schema': {}}}}}}}}, 'components': {'schemas': {'HTTPValidationError': {'properties': {'detail': {'items': {'$ref': '#/components/schemas/ValidationError'}, 'type': 'array', 'title': 'Detail'}}, 'type': 'object', 'title': 'HTTPValidationError'}, 'HousingInput': {'properties': {'longitude': {'type': 'number', 'title': 'Longitude'}, 'latitude': {'type': 'number', 'title': 'Latitude'}, 'housing_median_age': {'type': 'number', 'title': 'Housing Median Age'}, 'total_rooms': {'type': 'number', 'title': 'Total Rooms'}, 'total_bedrooms': {'type': 'number', 'title': 'Total Bedrooms'}, 'population': {'type': 'number', 'title': 'Population'}, 'households': {'type': 'number', 'title': 'Households'}, 'median_income': {'type': 'number', 'title': 'Median Income'}}, 'type': 'object', 'required': ['longitude', 'latitude', 'housing_median_age', 'total_rooms', 'total_bedrooms', 'population', 'households', 'median_income'], 'title': 'HousingInput'}, 'ValidationError': {'properties': {'loc': {'items': {'anyOf': [{'type': 'string'}, {'type': 'integer'}]}, 'type': 'array', 'title': 'Location'}, 'msg': {'type': 'string', 'title': 'Message'}, 'type': {'type': 'string', 'title': 'Error Type'}}, 'type': 'object', 'required': ['loc', 'msg', 'type'], 'title': 'ValidationError'}}}}
+2025-08-07 16:32:00,967 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-07 16:32:01,011 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 496.0
+python_gc_objects_collected_total{generation="1"} 18.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 369.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.515839488e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.0400128e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75458426933e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 5.77
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 3.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7545842720279672e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 2.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7545842720279841e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 0.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7545842720279953e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 0.0
+request_latency_seconds_bucket{le="0.1"} 2.0
+request_latency_seconds_bucket{le="0.25"} 2.0
+request_latency_seconds_bucket{le="0.5"} 2.0
+request_latency_seconds_bucket{le="0.75"} 2.0
+request_latency_seconds_bucket{le="1.0"} 2.0
+request_latency_seconds_bucket{le="2.5"} 2.0
+request_latency_seconds_bucket{le="5.0"} 2.0
+request_latency_seconds_bucket{le="7.5"} 2.0
+request_latency_seconds_bucket{le="10.0"} 2.0
+request_latency_seconds_bucket{le="+Inf"} 2.0
+request_latency_seconds_count 2.0
+request_latency_seconds_sum 0.16753005981445312
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7545842720280354e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-07 16:33:31,577 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:31,652 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:31,682 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:32,648 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:32,687 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:32,723 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:33,259 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:33,300 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:33,332 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:33,445 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:33,480 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:33,511 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:33,608 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:33,644 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:33,677 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:33,790 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:33,825 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:33,853 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:33,971 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:34,016 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:34,047 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:34,158 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:34,194 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:34,226 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:34,348 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:34,387 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:34,420 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:34,536 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:34,574 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:34,608 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:34,704 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:34,740 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:34,771 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:34,889 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:34,925 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:34,955 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:35,071 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:35,108 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:35,140 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:35,259 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:35,320 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:35,353 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:35,450 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:35,486 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:35,518 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:35,634 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:35,668 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:35,699 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:35,813 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:35,847 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:35,879 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:36,011 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:36,047 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:36,080 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:36,185 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:36,225 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:36,255 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:36,385 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:36,421 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:36,453 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:36,554 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:36,591 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:36,621 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:36,698 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:33:36,735 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:33:36,767 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:33:42,547 | INFO | REQUEST: GET http://localhost:8000/metrics BODY: 
+2025-08-07 16:33:42,613 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 504.0
+python_gc_objects_collected_total{generation="1"} 18.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 371.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516888064e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.0465664e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75458426933e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 6.42
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 26.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7545842720279672e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 25.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7545842720279841e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 0.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7545842720279953e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 0.0
+request_latency_seconds_bucket{le="0.1"} 15.0
+request_latency_seconds_bucket{le="0.25"} 25.0
+request_latency_seconds_bucket{le="0.5"} 25.0
+request_latency_seconds_bucket{le="0.75"} 25.0
+request_latency_seconds_bucket{le="1.0"} 25.0
+request_latency_seconds_bucket{le="2.5"} 25.0
+request_latency_seconds_bucket{le="5.0"} 25.0
+request_latency_seconds_bucket{le="7.5"} 25.0
+request_latency_seconds_bucket{le="10.0"} 25.0
+request_latency_seconds_bucket{le="+Inf"} 25.0
+request_latency_seconds_count 25.0
+request_latency_seconds_sum 2.5045788288116455
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7545842720280354e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-07 16:33:54,149 | INFO | REQUEST: GET http://localhost:8000/metrics BODY: 
+2025-08-07 16:33:54,195 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 504.0
+python_gc_objects_collected_total{generation="1"} 18.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 371.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516888064e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.0465664e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75458426933e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 6.47
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 12.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 27.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7545842720279672e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 26.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7545842720279841e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 0.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7545842720279953e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 0.0
+request_latency_seconds_bucket{le="0.1"} 16.0
+request_latency_seconds_bucket{le="0.25"} 26.0
+request_latency_seconds_bucket{le="0.5"} 26.0
+request_latency_seconds_bucket{le="0.75"} 26.0
+request_latency_seconds_bucket{le="1.0"} 26.0
+request_latency_seconds_bucket{le="2.5"} 26.0
+request_latency_seconds_bucket{le="5.0"} 26.0
+request_latency_seconds_bucket{le="7.5"} 26.0
+request_latency_seconds_bucket{le="10.0"} 26.0
+request_latency_seconds_bucket{le="+Inf"} 26.0
+request_latency_seconds_count 26.0
+request_latency_seconds_sum 2.599665880203247
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7545842720280354e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-07 16:33:54,302 | INFO | REQUEST: GET http://localhost:8000/favicon.ico BODY: 
+2025-08-07 16:33:54,345 | INFO | RESPONSE: status_code=404 body={'detail': 'Not Found'}
+2025-08-07 16:34:00,931 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-07 16:34:00,977 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 504.0
+python_gc_objects_collected_total{generation="1"} 18.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 371.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516888064e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.04787712e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75458426933e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 6.51
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 12.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 29.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7545842720279672e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 27.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7545842720279841e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 1.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7545842720279953e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 1.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.7545844343867285e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 0.0
+request_latency_seconds_bucket{le="0.1"} 18.0
+request_latency_seconds_bucket{le="0.25"} 28.0
+request_latency_seconds_bucket{le="0.5"} 28.0
+request_latency_seconds_bucket{le="0.75"} 28.0
+request_latency_seconds_bucket{le="1.0"} 28.0
+request_latency_seconds_bucket{le="2.5"} 28.0
+request_latency_seconds_bucket{le="5.0"} 28.0
+request_latency_seconds_bucket{le="7.5"} 28.0
+request_latency_seconds_bucket{le="10.0"} 28.0
+request_latency_seconds_bucket{le="+Inf"} 28.0
+request_latency_seconds_count 28.0
+request_latency_seconds_sum 2.767721176147461
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7545842720280354e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-07 16:36:00,918 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-07 16:36:00,963 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 504.0
+python_gc_objects_collected_total{generation="1"} 18.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 371.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516888064e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.04787712e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75458426933e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 6.87
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 30.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7545842720279672e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 28.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7545842720279841e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 1.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7545842720279953e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 1.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.7545844343867285e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 0.0
+request_latency_seconds_bucket{le="0.1"} 19.0
+request_latency_seconds_bucket{le="0.25"} 29.0
+request_latency_seconds_bucket{le="0.5"} 29.0
+request_latency_seconds_bucket{le="0.75"} 29.0
+request_latency_seconds_bucket{le="1.0"} 29.0
+request_latency_seconds_bucket{le="2.5"} 29.0
+request_latency_seconds_bucket{le="5.0"} 29.0
+request_latency_seconds_bucket{le="7.5"} 29.0
+request_latency_seconds_bucket{le="10.0"} 29.0
+request_latency_seconds_bucket{le="+Inf"} 29.0
+request_latency_seconds_count 29.0
+request_latency_seconds_sum 2.8448550701141357
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7545842720280354e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-07 16:38:00,912 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-07 16:38:00,964 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 504.0
+python_gc_objects_collected_total{generation="1"} 18.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 371.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516888064e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.04787712e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75458426933e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 7.2299999999999995
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 31.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7545842720279672e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 29.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7545842720279841e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 1.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7545842720279953e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 1.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.7545844343867285e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 0.0
+request_latency_seconds_bucket{le="0.1"} 20.0
+request_latency_seconds_bucket{le="0.25"} 30.0
+request_latency_seconds_bucket{le="0.5"} 30.0
+request_latency_seconds_bucket{le="0.75"} 30.0
+request_latency_seconds_bucket{le="1.0"} 30.0
+request_latency_seconds_bucket{le="2.5"} 30.0
+request_latency_seconds_bucket{le="5.0"} 30.0
+request_latency_seconds_bucket{le="7.5"} 30.0
+request_latency_seconds_bucket{le="10.0"} 30.0
+request_latency_seconds_bucket{le="+Inf"} 30.0
+request_latency_seconds_count 30.0
+request_latency_seconds_sum 2.9329497814178467
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7545842720280354e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-07 16:38:11,605 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:38:11,645 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:38:11,676 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:38:12,255 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:38:12,310 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:38:12,344 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:38:12,742 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:38:12,793 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:38:12,824 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:38:13,208 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:38:13,261 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:38:13,291 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:38:13,651 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:38:13,705 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:38:13,735 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:39:04,403 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:39:04,455 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:39:04,487 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:39:04,894 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:39:04,944 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:39:04,975 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:39:05,116 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:39:05,165 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:39:05,200 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:39:05,469 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:39:05,517 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:39:05,548 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:39:05,659 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:39:05,694 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:39:05,726 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:39:05,847 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:39:05,881 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:39:05,912 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:39:06,050 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:39:06,098 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:39:06,128 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:39:06,418 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:39:06,465 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:39:06,496 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:39:06,609 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:39:06,648 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:39:06,678 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:39:06,794 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:39:06,829 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:39:06,861 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:39:06,977 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:39:07,012 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:39:07,044 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:39:07,153 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:39:07,192 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:39:07,221 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:39:07,359 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:39:07,394 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:39:07,425 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:39:07,551 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:39:07,598 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:39:07,630 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:39:07,747 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:39:07,800 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:39:07,829 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:39:07,966 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-07 16:39:08,014 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-07 16:39:08,042 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-07 16:39:15,239 | INFO | REQUEST: GET http://localhost:8000/metrics BODY: 
+2025-08-07 16:39:15,276 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 553.0
+python_gc_objects_collected_total{generation="1"} 18.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 372.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516888064e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.04787712e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75458426933e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 7.77
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 12.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 53.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7545842720279672e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 51.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7545842720279841e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 1.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7545842720279953e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 1.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.7545844343867285e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 0.0
+request_latency_seconds_bucket{le="0.1"} 28.0
+request_latency_seconds_bucket{le="0.25"} 52.0
+request_latency_seconds_bucket{le="0.5"} 52.0
+request_latency_seconds_bucket{le="0.75"} 52.0
+request_latency_seconds_bucket{le="1.0"} 52.0
+request_latency_seconds_bucket{le="2.5"} 52.0
+request_latency_seconds_bucket{le="5.0"} 52.0
+request_latency_seconds_bucket{le="7.5"} 52.0
+request_latency_seconds_bucket{le="10.0"} 52.0
+request_latency_seconds_bucket{le="+Inf"} 52.0
+request_latency_seconds_count 52.0
+request_latency_seconds_sum 5.231858968734741
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7545842720280354e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-07 16:40:00,896 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-07 16:40:00,945 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 569.0
+python_gc_objects_collected_total{generation="1"} 18.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 373.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516888064e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.04787712e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75458426933e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 7.91
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 54.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7545842720279672e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 52.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7545842720279841e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 1.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7545842720279953e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 1.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.7545844343867285e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 1.0
+request_latency_seconds_bucket{le="0.1"} 29.0
+request_latency_seconds_bucket{le="0.25"} 53.0
+request_latency_seconds_bucket{le="0.5"} 53.0
+request_latency_seconds_bucket{le="0.75"} 53.0
+request_latency_seconds_bucket{le="1.0"} 53.0
+request_latency_seconds_bucket{le="2.5"} 53.0
+request_latency_seconds_bucket{le="5.0"} 53.0
+request_latency_seconds_bucket{le="7.5"} 53.0
+request_latency_seconds_bucket{le="10.0"} 53.0
+request_latency_seconds_bucket{le="+Inf"} 53.0
+request_latency_seconds_count 53.0
+request_latency_seconds_sum 5.302759170532227
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7545842720280354e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-07 16:42:00,898 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-07 16:42:00,928 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 569.0
+python_gc_objects_collected_total{generation="1"} 18.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 373.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516888064e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.04787712e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75458426933e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 8.26
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 55.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7545842720279672e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 53.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7545842720279841e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 1.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7545842720279953e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 1.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.7545844343867285e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 1.0
+request_latency_seconds_bucket{le="0.1"} 30.0
+request_latency_seconds_bucket{le="0.25"} 54.0
+request_latency_seconds_bucket{le="0.5"} 54.0
+request_latency_seconds_bucket{le="0.75"} 54.0
+request_latency_seconds_bucket{le="1.0"} 54.0
+request_latency_seconds_bucket{le="2.5"} 54.0
+request_latency_seconds_bucket{le="5.0"} 54.0
+request_latency_seconds_bucket{le="7.5"} 54.0
+request_latency_seconds_bucket{le="10.0"} 54.0
+request_latency_seconds_bucket{le="+Inf"} 54.0
+request_latency_seconds_count 54.0
+request_latency_seconds_sum 5.390764474868774
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7545842720280354e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-07 16:44:00,871 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-07 16:44:00,921 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 569.0
+python_gc_objects_collected_total{generation="1"} 18.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 373.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516888064e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.04787712e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75458426933e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 8.62
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 56.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7545842720279672e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 54.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7545842720279841e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 1.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7545842720279953e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 1.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.7545844343867285e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 2.0
+request_latency_seconds_bucket{le="0.1"} 31.0
+request_latency_seconds_bucket{le="0.25"} 55.0
+request_latency_seconds_bucket{le="0.5"} 55.0
+request_latency_seconds_bucket{le="0.75"} 55.0
+request_latency_seconds_bucket{le="1.0"} 55.0
+request_latency_seconds_bucket{le="2.5"} 55.0
+request_latency_seconds_bucket{le="5.0"} 55.0
+request_latency_seconds_bucket{le="7.5"} 55.0
+request_latency_seconds_bucket{le="10.0"} 55.0
+request_latency_seconds_bucket{le="+Inf"} 55.0
+request_latency_seconds_count 55.0
+request_latency_seconds_sum 5.458473443984985
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7545842720280354e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-07 16:45:11,956 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-07 16:45:11,999 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 505.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 369.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.51584768e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00257536e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75458510313e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 6.109999999999999
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 1.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7545851067387033e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 0.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7545851067387197e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 0.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.754585106738731e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 0.0
+request_latency_seconds_bucket{le="0.1"} 0.0
+request_latency_seconds_bucket{le="0.25"} 0.0
+request_latency_seconds_bucket{le="0.5"} 0.0
+request_latency_seconds_bucket{le="0.75"} 0.0
+request_latency_seconds_bucket{le="1.0"} 0.0
+request_latency_seconds_bucket{le="2.5"} 0.0
+request_latency_seconds_bucket{le="5.0"} 0.0
+request_latency_seconds_bucket{le="7.5"} 0.0
+request_latency_seconds_bucket{le="10.0"} 0.0
+request_latency_seconds_bucket{le="+Inf"} 0.0
+request_latency_seconds_count 0.0
+request_latency_seconds_sum 0.0
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7545851067387722e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+

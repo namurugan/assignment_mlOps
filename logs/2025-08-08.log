@@ -1,0 +1,3124 @@
+2025-08-08 15:32:41,113 | INFO | REQUEST: GET http://localhost:8000/ BODY: 
+2025-08-08 15:32:41,163 | INFO | RESPONSE: status_code=404 body={'detail': 'Not Found'}
+2025-08-08 15:32:41,256 | INFO | REQUEST: GET http://localhost:8000/favicon.ico BODY: 
+2025-08-08 15:32:41,304 | INFO | RESPONSE: status_code=404 body={'detail': 'Not Found'}
+2025-08-08 15:33:02,355 | INFO | REQUEST: GET http://localhost:8000/dcos BODY: 
+2025-08-08 15:33:02,394 | INFO | RESPONSE: status_code=404 body={'detail': 'Not Found'}
+2025-08-08 15:33:06,697 | INFO | REQUEST: GET http://localhost:8000/docs BODY: 
+2025-08-08 15:33:06,735 | INFO | RESPONSE: status_code=200 body=
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui.css">
+    <link rel="shortcut icon" href="https://fastapi.tiangolo.com/img/favicon.png">
+    <title>FastAPI - Swagger UI</title>
+    </head>
+    <body>
+    <div id="swagger-ui">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui-bundle.js"></script>
+    <!-- `SwaggerUIBundle` is now available on the page -->
+    <script>
+    const ui = SwaggerUIBundle({
+        url: '/openapi.json',
+    "dom_id": "#swagger-ui",
+"layout": "BaseLayout",
+"deepLinking": true,
+"showExtensions": true,
+"showCommonExtensions": true,
+oauth2RedirectUrl: window.location.origin + '/docs/oauth2-redirect',
+    presets: [
+        SwaggerUIBundle.presets.apis,
+        SwaggerUIBundle.SwaggerUIStandalonePreset
+        ],
+    })
+    </script>
+    </body>
+    </html>
+    
+2025-08-08 15:33:13,294 | INFO | REQUEST: GET http://localhost:8000/openapi.json BODY: 
+2025-08-08 15:33:13,347 | INFO | RESPONSE: status_code=200 body={'openapi': '3.1.0', 'info': {'title': 'FastAPI', 'version': '0.1.0'}, 'paths': {'/predict': {'post': {'summary': 'Predict', 'operationId': 'predict_predict_post', 'requestBody': {'content': {'application/json': {'schema': {'$ref': '#/components/schemas/HousingInput'}}}, 'required': True}, 'responses': {'200': {'description': 'Successful Response', 'content': {'application/json': {'schema': {}}}}, '422': {'description': 'Validation Error', 'content': {'application/json': {'schema': {'$ref': '#/components/schemas/HTTPValidationError'}}}}}}}, '/metrics': {'get': {'summary': 'Metrics Endpoint', 'description': 'Expose metrics in Prometheus format', 'operationId': 'metrics_endpoint_metrics_get', 'responses': {'200': {'description': 'Successful Response', 'content': {'application/json': {'schema': {}}}}}}}}, 'components': {'schemas': {'HTTPValidationError': {'properties': {'detail': {'items': {'$ref': '#/components/schemas/ValidationError'}, 'type': 'array', 'title': 'Detail'}}, 'type': 'object', 'title': 'HTTPValidationError'}, 'HousingInput': {'properties': {'longitude': {'type': 'number', 'title': 'Longitude'}, 'latitude': {'type': 'number', 'title': 'Latitude'}, 'housing_median_age': {'type': 'number', 'title': 'Housing Median Age'}, 'total_rooms': {'type': 'number', 'title': 'Total Rooms'}, 'total_bedrooms': {'type': 'number', 'title': 'Total Bedrooms'}, 'population': {'type': 'number', 'title': 'Population'}, 'households': {'type': 'number', 'title': 'Households'}, 'median_income': {'type': 'number', 'title': 'Median Income'}}, 'type': 'object', 'required': ['longitude', 'latitude', 'housing_median_age', 'total_rooms', 'total_bedrooms', 'population', 'households', 'median_income'], 'title': 'HousingInput'}, 'ValidationError': {'properties': {'loc': {'items': {'anyOf': [{'type': 'string'}, {'type': 'integer'}]}, 'type': 'array', 'title': 'Location'}, 'msg': {'type': 'string', 'title': 'Message'}, 'type': {'type': 'string', 'title': 'Error Type'}}, 'type': 'object', 'required': ['loc', 'msg', 'type'], 'title': 'ValidationError'}}}}
+2025-08-08 15:34:13,562 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 15:34:13,606 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 689.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 370.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.515835392e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 1.99401472e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 6.49
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 6.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 2.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 2.0
+request_latency_seconds_bucket{le="0.1"} 5.0
+request_latency_seconds_bucket{le="0.25"} 5.0
+request_latency_seconds_bucket{le="0.5"} 5.0
+request_latency_seconds_bucket{le="0.75"} 5.0
+request_latency_seconds_bucket{le="1.0"} 5.0
+request_latency_seconds_bucket{le="2.5"} 5.0
+request_latency_seconds_bucket{le="5.0"} 5.0
+request_latency_seconds_bucket{le="7.5"} 5.0
+request_latency_seconds_bucket{le="10.0"} 5.0
+request_latency_seconds_bucket{le="+Inf"} 5.0
+request_latency_seconds_count 5.0
+request_latency_seconds_sum 0.4030454158782959
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 15:36:13,518 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 15:36:13,567 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 689.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 370.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.515835392e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 1.99401472e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 6.85
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 7.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 3.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 2.0
+request_latency_seconds_bucket{le="0.1"} 6.0
+request_latency_seconds_bucket{le="0.25"} 6.0
+request_latency_seconds_bucket{le="0.5"} 6.0
+request_latency_seconds_bucket{le="0.75"} 6.0
+request_latency_seconds_bucket{le="1.0"} 6.0
+request_latency_seconds_bucket{le="2.5"} 6.0
+request_latency_seconds_bucket{le="5.0"} 6.0
+request_latency_seconds_bucket{le="7.5"} 6.0
+request_latency_seconds_bucket{le="10.0"} 6.0
+request_latency_seconds_bucket{le="+Inf"} 6.0
+request_latency_seconds_count 6.0
+request_latency_seconds_sum 0.485140323638916
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 15:36:29,001 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-08 15:36:29,059 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-08 15:36:29,092 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-08 15:36:30,692 | INFO | REQUEST: POST http://localhost:8000/predict BODY: {
+  "longitude": 122.23,
+  "latitude": 37.88,
+  "housing_median_age": 41,
+  "total_rooms": 880,
+  "total_bedrooms": 129,
+  "population": 322,
+  "households": 126,
+  "median_income": 8.3252
+}
+2025-08-08 15:36:30,742 | INFO | INPUT: {'longitude': 122.23, 'latitude': 37.88, 'housing_median_age': 41.0, 'total_rooms': 880.0, 'total_bedrooms': 129.0, 'population': 322.0, 'households': 126.0, 'median_income': 8.3252} | PREDICTION: 405800.0
+2025-08-08 15:36:30,773 | INFO | RESPONSE: status_code=200 body={'prediction': 405800.0}
+2025-08-08 15:36:42,005 | INFO | REQUEST: GET http://localhost:8000/metrics BODY: 
+2025-08-08 15:36:42,056 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 705.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 371.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.515835392e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00187904e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 6.9799999999999995
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 10.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 6.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 2.0
+request_latency_seconds_bucket{le="0.1"} 7.0
+request_latency_seconds_bucket{le="0.25"} 9.0
+request_latency_seconds_bucket{le="0.5"} 9.0
+request_latency_seconds_bucket{le="0.75"} 9.0
+request_latency_seconds_bucket{le="1.0"} 9.0
+request_latency_seconds_bucket{le="2.5"} 9.0
+request_latency_seconds_bucket{le="5.0"} 9.0
+request_latency_seconds_bucket{le="7.5"} 9.0
+request_latency_seconds_bucket{le="10.0"} 9.0
+request_latency_seconds_bucket{le="+Inf"} 9.0
+request_latency_seconds_count 9.0
+request_latency_seconds_sum 0.8044378757476807
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 15:36:43,617 | INFO | REQUEST: GET http://localhost:8000/metrics BODY: 
+2025-08-08 15:36:43,673 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 705.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 371.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00187904e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 7.0
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 11.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 7.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 2.0
+request_latency_seconds_bucket{le="0.1"} 8.0
+request_latency_seconds_bucket{le="0.25"} 10.0
+request_latency_seconds_bucket{le="0.5"} 10.0
+request_latency_seconds_bucket{le="0.75"} 10.0
+request_latency_seconds_bucket{le="1.0"} 10.0
+request_latency_seconds_bucket{le="2.5"} 10.0
+request_latency_seconds_bucket{le="5.0"} 10.0
+request_latency_seconds_bucket{le="7.5"} 10.0
+request_latency_seconds_bucket{le="10.0"} 10.0
+request_latency_seconds_bucket{le="+Inf"} 10.0
+request_latency_seconds_count 10.0
+request_latency_seconds_sum 0.8876993656158447
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 15:36:44,583 | INFO | REQUEST: GET http://localhost:8000/metrics BODY: 
+2025-08-08 15:36:44,634 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 705.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 371.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00187904e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 7.01
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 12.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 8.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 2.0
+request_latency_seconds_bucket{le="0.1"} 9.0
+request_latency_seconds_bucket{le="0.25"} 11.0
+request_latency_seconds_bucket{le="0.5"} 11.0
+request_latency_seconds_bucket{le="0.75"} 11.0
+request_latency_seconds_bucket{le="1.0"} 11.0
+request_latency_seconds_bucket{le="2.5"} 11.0
+request_latency_seconds_bucket{le="5.0"} 11.0
+request_latency_seconds_bucket{le="7.5"} 11.0
+request_latency_seconds_bucket{le="10.0"} 11.0
+request_latency_seconds_bucket{le="+Inf"} 11.0
+request_latency_seconds_count 11.0
+request_latency_seconds_sum 0.9778473377227783
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 15:36:45,406 | INFO | REQUEST: GET http://localhost:8000/metrics BODY: 
+2025-08-08 15:36:45,442 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 705.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 371.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00187904e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 7.029999999999999
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 13.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 9.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 2.0
+request_latency_seconds_bucket{le="0.1"} 10.0
+request_latency_seconds_bucket{le="0.25"} 12.0
+request_latency_seconds_bucket{le="0.5"} 12.0
+request_latency_seconds_bucket{le="0.75"} 12.0
+request_latency_seconds_bucket{le="1.0"} 12.0
+request_latency_seconds_bucket{le="2.5"} 12.0
+request_latency_seconds_bucket{le="5.0"} 12.0
+request_latency_seconds_bucket{le="7.5"} 12.0
+request_latency_seconds_bucket{le="10.0"} 12.0
+request_latency_seconds_bucket{le="+Inf"} 12.0
+request_latency_seconds_count 12.0
+request_latency_seconds_sum 1.061880111694336
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 15:38:13,487 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 15:38:13,535 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 705.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 371.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00187904e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 7.290000000000001
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 14.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 10.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 3.0
+request_latency_seconds_bucket{le="0.1"} 11.0
+request_latency_seconds_bucket{le="0.25"} 13.0
+request_latency_seconds_bucket{le="0.5"} 13.0
+request_latency_seconds_bucket{le="0.75"} 13.0
+request_latency_seconds_bucket{le="1.0"} 13.0
+request_latency_seconds_bucket{le="2.5"} 13.0
+request_latency_seconds_bucket{le="5.0"} 13.0
+request_latency_seconds_bucket{le="7.5"} 13.0
+request_latency_seconds_bucket{le="10.0"} 13.0
+request_latency_seconds_bucket{le="+Inf"} 13.0
+request_latency_seconds_count 13.0
+request_latency_seconds_sum 1.1316320896148682
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 15:40:13,473 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 15:40:13,521 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 705.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 371.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00187904e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 7.66
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 15.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 11.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 3.0
+request_latency_seconds_bucket{le="0.1"} 12.0
+request_latency_seconds_bucket{le="0.25"} 14.0
+request_latency_seconds_bucket{le="0.5"} 14.0
+request_latency_seconds_bucket{le="0.75"} 14.0
+request_latency_seconds_bucket{le="1.0"} 14.0
+request_latency_seconds_bucket{le="2.5"} 14.0
+request_latency_seconds_bucket{le="5.0"} 14.0
+request_latency_seconds_bucket{le="7.5"} 14.0
+request_latency_seconds_bucket{le="10.0"} 14.0
+request_latency_seconds_bucket{le="+Inf"} 14.0
+request_latency_seconds_count 14.0
+request_latency_seconds_sum 1.2121446132659912
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 15:42:13,449 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 15:42:13,496 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 705.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 371.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00187904e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 8.02
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 16.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 12.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 3.0
+request_latency_seconds_bucket{le="0.1"} 13.0
+request_latency_seconds_bucket{le="0.25"} 15.0
+request_latency_seconds_bucket{le="0.5"} 15.0
+request_latency_seconds_bucket{le="0.75"} 15.0
+request_latency_seconds_bucket{le="1.0"} 15.0
+request_latency_seconds_bucket{le="2.5"} 15.0
+request_latency_seconds_bucket{le="5.0"} 15.0
+request_latency_seconds_bucket{le="7.5"} 15.0
+request_latency_seconds_bucket{le="10.0"} 15.0
+request_latency_seconds_bucket{le="+Inf"} 15.0
+request_latency_seconds_count 15.0
+request_latency_seconds_sum 1.3020648956298828
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 15:44:13,432 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 15:44:13,484 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 705.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 371.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00187904e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 8.36
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 17.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 13.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 3.0
+request_latency_seconds_bucket{le="0.1"} 14.0
+request_latency_seconds_bucket{le="0.25"} 16.0
+request_latency_seconds_bucket{le="0.5"} 16.0
+request_latency_seconds_bucket{le="0.75"} 16.0
+request_latency_seconds_bucket{le="1.0"} 16.0
+request_latency_seconds_bucket{le="2.5"} 16.0
+request_latency_seconds_bucket{le="5.0"} 16.0
+request_latency_seconds_bucket{le="7.5"} 16.0
+request_latency_seconds_bucket{le="10.0"} 16.0
+request_latency_seconds_bucket{le="+Inf"} 16.0
+request_latency_seconds_count 16.0
+request_latency_seconds_sum 1.3787319660186768
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 15:46:13,413 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 15:46:13,460 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 705.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 371.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00187904e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 8.72
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 18.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 14.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 3.0
+request_latency_seconds_bucket{le="0.1"} 15.0
+request_latency_seconds_bucket{le="0.25"} 17.0
+request_latency_seconds_bucket{le="0.5"} 17.0
+request_latency_seconds_bucket{le="0.75"} 17.0
+request_latency_seconds_bucket{le="1.0"} 17.0
+request_latency_seconds_bucket{le="2.5"} 17.0
+request_latency_seconds_bucket{le="5.0"} 17.0
+request_latency_seconds_bucket{le="7.5"} 17.0
+request_latency_seconds_bucket{le="10.0"} 17.0
+request_latency_seconds_bucket{le="+Inf"} 17.0
+request_latency_seconds_count 17.0
+request_latency_seconds_sum 1.4668190479278564
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 15:48:13,395 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 15:48:13,437 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 705.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 371.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00187904e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 9.01
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 19.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 15.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 3.0
+request_latency_seconds_bucket{le="0.1"} 16.0
+request_latency_seconds_bucket{le="0.25"} 18.0
+request_latency_seconds_bucket{le="0.5"} 18.0
+request_latency_seconds_bucket{le="0.75"} 18.0
+request_latency_seconds_bucket{le="1.0"} 18.0
+request_latency_seconds_bucket{le="2.5"} 18.0
+request_latency_seconds_bucket{le="5.0"} 18.0
+request_latency_seconds_bucket{le="7.5"} 18.0
+request_latency_seconds_bucket{le="10.0"} 18.0
+request_latency_seconds_bucket{le="+Inf"} 18.0
+request_latency_seconds_count 18.0
+request_latency_seconds_sum 1.5444633960723877
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 15:50:13,378 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 15:50:13,423 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 705.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 371.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00187904e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 9.31
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 20.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 16.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 4.0
+request_latency_seconds_bucket{le="0.1"} 17.0
+request_latency_seconds_bucket{le="0.25"} 19.0
+request_latency_seconds_bucket{le="0.5"} 19.0
+request_latency_seconds_bucket{le="0.75"} 19.0
+request_latency_seconds_bucket{le="1.0"} 19.0
+request_latency_seconds_bucket{le="2.5"} 19.0
+request_latency_seconds_bucket{le="5.0"} 19.0
+request_latency_seconds_bucket{le="7.5"} 19.0
+request_latency_seconds_bucket{le="10.0"} 19.0
+request_latency_seconds_bucket{le="+Inf"} 19.0
+request_latency_seconds_count 19.0
+request_latency_seconds_sum 1.6171741485595703
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 15:52:13,363 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 15:52:13,418 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 761.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 372.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00187904e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 9.63
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 21.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 17.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 5.0
+request_latency_seconds_bucket{le="0.1"} 18.0
+request_latency_seconds_bucket{le="0.25"} 20.0
+request_latency_seconds_bucket{le="0.5"} 20.0
+request_latency_seconds_bucket{le="0.75"} 20.0
+request_latency_seconds_bucket{le="1.0"} 20.0
+request_latency_seconds_bucket{le="2.5"} 20.0
+request_latency_seconds_bucket{le="5.0"} 20.0
+request_latency_seconds_bucket{le="7.5"} 20.0
+request_latency_seconds_bucket{le="10.0"} 20.0
+request_latency_seconds_bucket{le="+Inf"} 20.0
+request_latency_seconds_count 20.0
+request_latency_seconds_sum 1.6909825801849365
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 15:54:13,347 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 15:54:13,388 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 761.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 372.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00187904e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 9.95
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 22.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 18.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 5.0
+request_latency_seconds_bucket{le="0.1"} 19.0
+request_latency_seconds_bucket{le="0.25"} 21.0
+request_latency_seconds_bucket{le="0.5"} 21.0
+request_latency_seconds_bucket{le="0.75"} 21.0
+request_latency_seconds_bucket{le="1.0"} 21.0
+request_latency_seconds_bucket{le="2.5"} 21.0
+request_latency_seconds_bucket{le="5.0"} 21.0
+request_latency_seconds_bucket{le="7.5"} 21.0
+request_latency_seconds_bucket{le="10.0"} 21.0
+request_latency_seconds_bucket{le="+Inf"} 21.0
+request_latency_seconds_count 21.0
+request_latency_seconds_sum 1.781693458557129
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 15:56:13,334 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 15:56:13,367 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 761.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 372.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00187904e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 10.28
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 23.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 19.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 6.0
+request_latency_seconds_bucket{le="0.1"} 20.0
+request_latency_seconds_bucket{le="0.25"} 22.0
+request_latency_seconds_bucket{le="0.5"} 22.0
+request_latency_seconds_bucket{le="0.75"} 22.0
+request_latency_seconds_bucket{le="1.0"} 22.0
+request_latency_seconds_bucket{le="2.5"} 22.0
+request_latency_seconds_bucket{le="5.0"} 22.0
+request_latency_seconds_bucket{le="7.5"} 22.0
+request_latency_seconds_bucket{le="10.0"} 22.0
+request_latency_seconds_bucket{le="+Inf"} 22.0
+request_latency_seconds_count 22.0
+request_latency_seconds_sum 1.851987361907959
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 15:58:13,319 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 15:58:13,357 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 761.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 372.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00187904e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 10.61
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 24.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 20.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 7.0
+request_latency_seconds_bucket{le="0.1"} 21.0
+request_latency_seconds_bucket{le="0.25"} 23.0
+request_latency_seconds_bucket{le="0.5"} 23.0
+request_latency_seconds_bucket{le="0.75"} 23.0
+request_latency_seconds_bucket{le="1.0"} 23.0
+request_latency_seconds_bucket{le="2.5"} 23.0
+request_latency_seconds_bucket{le="5.0"} 23.0
+request_latency_seconds_bucket{le="7.5"} 23.0
+request_latency_seconds_bucket{le="10.0"} 23.0
+request_latency_seconds_bucket{le="+Inf"} 23.0
+request_latency_seconds_count 23.0
+request_latency_seconds_sum 1.9168920516967773
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 16:00:13,302 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 16:00:13,326 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 761.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 372.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00187904e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 10.88
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 25.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 21.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 0.0
+request_latency_seconds_bucket{le="0.075"} 8.0
+request_latency_seconds_bucket{le="0.1"} 22.0
+request_latency_seconds_bucket{le="0.25"} 24.0
+request_latency_seconds_bucket{le="0.5"} 24.0
+request_latency_seconds_bucket{le="0.75"} 24.0
+request_latency_seconds_bucket{le="1.0"} 24.0
+request_latency_seconds_bucket{le="2.5"} 24.0
+request_latency_seconds_bucket{le="5.0"} 24.0
+request_latency_seconds_bucket{le="7.5"} 24.0
+request_latency_seconds_bucket{le="10.0"} 24.0
+request_latency_seconds_bucket{le="+Inf"} 24.0
+request_latency_seconds_count 24.0
+request_latency_seconds_sum 1.9825646877288818
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 16:02:13,293 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 16:02:13,319 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 761.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 372.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00187904e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 11.149999999999999
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 26.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 22.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 1.0
+request_latency_seconds_bucket{le="0.075"} 9.0
+request_latency_seconds_bucket{le="0.1"} 23.0
+request_latency_seconds_bucket{le="0.25"} 25.0
+request_latency_seconds_bucket{le="0.5"} 25.0
+request_latency_seconds_bucket{le="0.75"} 25.0
+request_latency_seconds_bucket{le="1.0"} 25.0
+request_latency_seconds_bucket{le="2.5"} 25.0
+request_latency_seconds_bucket{le="5.0"} 25.0
+request_latency_seconds_bucket{le="7.5"} 25.0
+request_latency_seconds_bucket{le="10.0"} 25.0
+request_latency_seconds_bucket{le="+Inf"} 25.0
+request_latency_seconds_count 25.0
+request_latency_seconds_sum 2.028806209564209
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 16:04:13,279 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 16:04:13,323 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 761.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 372.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00187904e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 11.47
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 27.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 23.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 2.0
+request_latency_seconds_bucket{le="0.075"} 10.0
+request_latency_seconds_bucket{le="0.1"} 24.0
+request_latency_seconds_bucket{le="0.25"} 26.0
+request_latency_seconds_bucket{le="0.5"} 26.0
+request_latency_seconds_bucket{le="0.75"} 26.0
+request_latency_seconds_bucket{le="1.0"} 26.0
+request_latency_seconds_bucket{le="2.5"} 26.0
+request_latency_seconds_bucket{le="5.0"} 26.0
+request_latency_seconds_bucket{le="7.5"} 26.0
+request_latency_seconds_bucket{le="10.0"} 26.0
+request_latency_seconds_bucket{le="+Inf"} 26.0
+request_latency_seconds_count 26.0
+request_latency_seconds_sum 2.076918840408325
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 16:06:13,256 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 16:06:13,284 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 761.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 372.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00187904e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 11.799999999999999
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 28.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 24.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 2.0
+request_latency_seconds_bucket{le="0.075"} 11.0
+request_latency_seconds_bucket{le="0.1"} 25.0
+request_latency_seconds_bucket{le="0.25"} 27.0
+request_latency_seconds_bucket{le="0.5"} 27.0
+request_latency_seconds_bucket{le="0.75"} 27.0
+request_latency_seconds_bucket{le="1.0"} 27.0
+request_latency_seconds_bucket{le="2.5"} 27.0
+request_latency_seconds_bucket{le="5.0"} 27.0
+request_latency_seconds_bucket{le="7.5"} 27.0
+request_latency_seconds_bucket{le="10.0"} 27.0
+request_latency_seconds_bucket{le="+Inf"} 27.0
+request_latency_seconds_count 27.0
+request_latency_seconds_sum 2.1483640670776367
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 16:08:13,231 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 16:08:13,275 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 761.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 372.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00187904e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 12.13
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 29.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 25.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 3.0
+request_latency_seconds_bucket{le="0.075"} 12.0
+request_latency_seconds_bucket{le="0.1"} 26.0
+request_latency_seconds_bucket{le="0.25"} 28.0
+request_latency_seconds_bucket{le="0.5"} 28.0
+request_latency_seconds_bucket{le="0.75"} 28.0
+request_latency_seconds_bucket{le="1.0"} 28.0
+request_latency_seconds_bucket{le="2.5"} 28.0
+request_latency_seconds_bucket{le="5.0"} 28.0
+request_latency_seconds_bucket{le="7.5"} 28.0
+request_latency_seconds_bucket{le="10.0"} 28.0
+request_latency_seconds_bucket{le="+Inf"} 28.0
+request_latency_seconds_count 28.0
+request_latency_seconds_sum 2.197695732116699
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 16:10:13,202 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 16:10:13,230 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 761.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 372.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00318976e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 12.45
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 30.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 26.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 3.0
+request_latency_seconds_bucket{le="0.075"} 13.0
+request_latency_seconds_bucket{le="0.1"} 27.0
+request_latency_seconds_bucket{le="0.25"} 29.0
+request_latency_seconds_bucket{le="0.5"} 29.0
+request_latency_seconds_bucket{le="0.75"} 29.0
+request_latency_seconds_bucket{le="1.0"} 29.0
+request_latency_seconds_bucket{le="2.5"} 29.0
+request_latency_seconds_bucket{le="5.0"} 29.0
+request_latency_seconds_bucket{le="7.5"} 29.0
+request_latency_seconds_bucket{le="10.0"} 29.0
+request_latency_seconds_bucket{le="+Inf"} 29.0
+request_latency_seconds_count 29.0
+request_latency_seconds_sum 2.2661290168762207
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 16:12:13,173 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 16:12:13,199 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 761.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 372.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00318976e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 12.780000000000001
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 31.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 27.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 3.0
+request_latency_seconds_bucket{le="0.075"} 14.0
+request_latency_seconds_bucket{le="0.1"} 28.0
+request_latency_seconds_bucket{le="0.25"} 30.0
+request_latency_seconds_bucket{le="0.5"} 30.0
+request_latency_seconds_bucket{le="0.75"} 30.0
+request_latency_seconds_bucket{le="1.0"} 30.0
+request_latency_seconds_bucket{le="2.5"} 30.0
+request_latency_seconds_bucket{le="5.0"} 30.0
+request_latency_seconds_bucket{le="7.5"} 30.0
+request_latency_seconds_bucket{le="10.0"} 30.0
+request_latency_seconds_bucket{le="+Inf"} 30.0
+request_latency_seconds_count 30.0
+request_latency_seconds_sum 2.3180792331695557
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 16:14:13,143 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 16:14:13,202 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 761.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 372.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00318976e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 13.100000000000001
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 32.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 28.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 4.0
+request_latency_seconds_bucket{le="0.075"} 15.0
+request_latency_seconds_bucket{le="0.1"} 29.0
+request_latency_seconds_bucket{le="0.25"} 31.0
+request_latency_seconds_bucket{le="0.5"} 31.0
+request_latency_seconds_bucket{le="0.75"} 31.0
+request_latency_seconds_bucket{le="1.0"} 31.0
+request_latency_seconds_bucket{le="2.5"} 31.0
+request_latency_seconds_bucket{le="5.0"} 31.0
+request_latency_seconds_bucket{le="7.5"} 31.0
+request_latency_seconds_bucket{le="10.0"} 31.0
+request_latency_seconds_bucket{le="+Inf"} 31.0
+request_latency_seconds_count 31.0
+request_latency_seconds_sum 2.3669795989990234
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 16:16:13,123 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 16:16:13,168 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 761.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 372.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00318976e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 13.42
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 33.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 29.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 4.0
+request_latency_seconds_bucket{le="0.075"} 15.0
+request_latency_seconds_bucket{le="0.1"} 30.0
+request_latency_seconds_bucket{le="0.25"} 32.0
+request_latency_seconds_bucket{le="0.5"} 32.0
+request_latency_seconds_bucket{le="0.75"} 32.0
+request_latency_seconds_bucket{le="1.0"} 32.0
+request_latency_seconds_bucket{le="2.5"} 32.0
+request_latency_seconds_bucket{le="5.0"} 32.0
+request_latency_seconds_bucket{le="7.5"} 32.0
+request_latency_seconds_bucket{le="10.0"} 32.0
+request_latency_seconds_bucket{le="+Inf"} 32.0
+request_latency_seconds_count 32.0
+request_latency_seconds_sum 2.450653076171875
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 16:18:13,102 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 16:18:13,165 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 761.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 372.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00318976e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 13.739999999999998
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 34.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 30.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 4.0
+request_latency_seconds_bucket{le="0.075"} 16.0
+request_latency_seconds_bucket{le="0.1"} 31.0
+request_latency_seconds_bucket{le="0.25"} 33.0
+request_latency_seconds_bucket{le="0.5"} 33.0
+request_latency_seconds_bucket{le="0.75"} 33.0
+request_latency_seconds_bucket{le="1.0"} 33.0
+request_latency_seconds_bucket{le="2.5"} 33.0
+request_latency_seconds_bucket{le="5.0"} 33.0
+request_latency_seconds_bucket{le="7.5"} 33.0
+request_latency_seconds_bucket{le="10.0"} 33.0
+request_latency_seconds_bucket{le="+Inf"} 33.0
+request_latency_seconds_count 33.0
+request_latency_seconds_sum 2.5216867923736572
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 16:20:13,081 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 16:20:13,142 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 865.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 373.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00318976e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 14.09
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 35.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 31.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 4.0
+request_latency_seconds_bucket{le="0.075"} 16.0
+request_latency_seconds_bucket{le="0.1"} 32.0
+request_latency_seconds_bucket{le="0.25"} 34.0
+request_latency_seconds_bucket{le="0.5"} 34.0
+request_latency_seconds_bucket{le="0.75"} 34.0
+request_latency_seconds_bucket{le="1.0"} 34.0
+request_latency_seconds_bucket{le="2.5"} 34.0
+request_latency_seconds_bucket{le="5.0"} 34.0
+request_latency_seconds_bucket{le="7.5"} 34.0
+request_latency_seconds_bucket{le="10.0"} 34.0
+request_latency_seconds_bucket{le="+Inf"} 34.0
+request_latency_seconds_count 34.0
+request_latency_seconds_sum 2.6076815128326416
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 16:22:13,062 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 16:22:13,105 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 865.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 373.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00318976e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 14.379999999999999
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 36.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 32.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 4.0
+request_latency_seconds_bucket{le="0.075"} 16.0
+request_latency_seconds_bucket{le="0.1"} 33.0
+request_latency_seconds_bucket{le="0.25"} 35.0
+request_latency_seconds_bucket{le="0.5"} 35.0
+request_latency_seconds_bucket{le="0.75"} 35.0
+request_latency_seconds_bucket{le="1.0"} 35.0
+request_latency_seconds_bucket{le="2.5"} 35.0
+request_latency_seconds_bucket{le="5.0"} 35.0
+request_latency_seconds_bucket{le="7.5"} 35.0
+request_latency_seconds_bucket{le="10.0"} 35.0
+request_latency_seconds_bucket{le="+Inf"} 35.0
+request_latency_seconds_count 35.0
+request_latency_seconds_sum 2.6947484016418457
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 16:24:13,036 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 16:24:13,079 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 865.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 373.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00318976e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 14.71
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 37.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 33.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 4.0
+request_latency_seconds_bucket{le="0.075"} 17.0
+request_latency_seconds_bucket{le="0.1"} 34.0
+request_latency_seconds_bucket{le="0.25"} 36.0
+request_latency_seconds_bucket{le="0.5"} 36.0
+request_latency_seconds_bucket{le="0.75"} 36.0
+request_latency_seconds_bucket{le="1.0"} 36.0
+request_latency_seconds_bucket{le="2.5"} 36.0
+request_latency_seconds_bucket{le="5.0"} 36.0
+request_latency_seconds_bucket{le="7.5"} 36.0
+request_latency_seconds_bucket{le="10.0"} 36.0
+request_latency_seconds_bucket{le="+Inf"} 36.0
+request_latency_seconds_count 36.0
+request_latency_seconds_sum 2.761650800704956
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 16:26:13,021 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 16:26:13,084 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 865.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 373.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00318976e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 15.07
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 38.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 34.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 4.0
+request_latency_seconds_bucket{le="0.075"} 18.0
+request_latency_seconds_bucket{le="0.1"} 35.0
+request_latency_seconds_bucket{le="0.25"} 37.0
+request_latency_seconds_bucket{le="0.5"} 37.0
+request_latency_seconds_bucket{le="0.75"} 37.0
+request_latency_seconds_bucket{le="1.0"} 37.0
+request_latency_seconds_bucket{le="2.5"} 37.0
+request_latency_seconds_bucket{le="5.0"} 37.0
+request_latency_seconds_bucket{le="7.5"} 37.0
+request_latency_seconds_bucket{le="10.0"} 37.0
+request_latency_seconds_bucket{le="+Inf"} 37.0
+request_latency_seconds_count 37.0
+request_latency_seconds_sum 2.828061103820801
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 16:28:13,006 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 16:28:13,070 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 865.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 373.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00318976e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 15.389999999999999
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 39.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 35.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 4.0
+request_latency_seconds_bucket{le="0.075"} 18.0
+request_latency_seconds_bucket{le="0.1"} 36.0
+request_latency_seconds_bucket{le="0.25"} 38.0
+request_latency_seconds_bucket{le="0.5"} 38.0
+request_latency_seconds_bucket{le="0.75"} 38.0
+request_latency_seconds_bucket{le="1.0"} 38.0
+request_latency_seconds_bucket{le="2.5"} 38.0
+request_latency_seconds_bucket{le="5.0"} 38.0
+request_latency_seconds_bucket{le="7.5"} 38.0
+request_latency_seconds_bucket{le="10.0"} 38.0
+request_latency_seconds_bucket{le="+Inf"} 38.0
+request_latency_seconds_count 38.0
+request_latency_seconds_sum 2.9166998863220215
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 16:30:12,992 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 16:30:13,053 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 865.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 373.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00318976e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 15.73
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 40.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 36.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 4.0
+request_latency_seconds_bucket{le="0.075"} 18.0
+request_latency_seconds_bucket{le="0.1"} 37.0
+request_latency_seconds_bucket{le="0.25"} 39.0
+request_latency_seconds_bucket{le="0.5"} 39.0
+request_latency_seconds_bucket{le="0.75"} 39.0
+request_latency_seconds_bucket{le="1.0"} 39.0
+request_latency_seconds_bucket{le="2.5"} 39.0
+request_latency_seconds_bucket{le="5.0"} 39.0
+request_latency_seconds_bucket{le="7.5"} 39.0
+request_latency_seconds_bucket{le="10.0"} 39.0
+request_latency_seconds_bucket{le="+Inf"} 39.0
+request_latency_seconds_count 39.0
+request_latency_seconds_sum 3.0051279067993164
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+
+2025-08-08 16:32:12,977 | INFO | REQUEST: GET http://fastapi-app:8000/metrics BODY: 
+2025-08-08 16:32:13,024 | INFO | RESPONSE: status_code=200 body=# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 865.0
+python_gc_objects_collected_total{generation="1"} 10.0
+python_gc_objects_collected_total{generation="2"} 20.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 373.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="10",patchlevel="18",version="3.10.18"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 1.516883968e+09
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 2.00318976e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.75466713397e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 16.07
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 11.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP model_up Model availability (1 = up, 0 = down)
+# TYPE model_up gauge
+model_up 1.0
+# HELP total_requests_total Total number of requests
+# TYPE total_requests_total counter
+total_requests_total 41.0
+# HELP total_requests_created Total number of requests
+# TYPE total_requests_created gauge
+total_requests_created 1.7546671373165736e+09
+# HELP successful_predictions_total Successful prediction count
+# TYPE successful_predictions_total counter
+successful_predictions_total 37.0
+# HELP successful_predictions_created Successful prediction count
+# TYPE successful_predictions_created gauge
+successful_predictions_created 1.7546671373165855e+09
+# HELP failed_predictions_total Failed prediction count
+# TYPE failed_predictions_total counter
+failed_predictions_total 3.0
+# HELP failed_predictions_created Failed prediction count
+# TYPE failed_predictions_created gauge
+failed_predictions_created 1.7546671373165936e+09
+# HELP error_count_total Error counts by status
+# TYPE error_count_total counter
+error_count_total{status_code="404"} 3.0
+# HELP error_count_created Error counts by status
+# TYPE error_count_created gauge
+error_count_created{status_code="404"} 1.754667161198949e+09
+# HELP request_latency_seconds Request latency in seconds
+# TYPE request_latency_seconds histogram
+request_latency_seconds_bucket{le="0.005"} 0.0
+request_latency_seconds_bucket{le="0.01"} 0.0
+request_latency_seconds_bucket{le="0.025"} 0.0
+request_latency_seconds_bucket{le="0.05"} 4.0
+request_latency_seconds_bucket{le="0.075"} 18.0
+request_latency_seconds_bucket{le="0.1"} 38.0
+request_latency_seconds_bucket{le="0.25"} 40.0
+request_latency_seconds_bucket{le="0.5"} 40.0
+request_latency_seconds_bucket{le="0.75"} 40.0
+request_latency_seconds_bucket{le="1.0"} 40.0
+request_latency_seconds_bucket{le="2.5"} 40.0
+request_latency_seconds_bucket{le="5.0"} 40.0
+request_latency_seconds_bucket{le="7.5"} 40.0
+request_latency_seconds_bucket{le="10.0"} 40.0
+request_latency_seconds_bucket{le="+Inf"} 40.0
+request_latency_seconds_count 40.0
+request_latency_seconds_sum 3.091883420944214
+# HELP request_latency_seconds_created Request latency in seconds
+# TYPE request_latency_seconds_created gauge
+request_latency_seconds_created 1.7546671373166227e+09
+# HELP model_version Version of the model
+# TYPE model_version gauge
+model_version 1.0
+

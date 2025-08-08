@@ -4,9 +4,14 @@ from logging.handlers import TimedRotatingFileHandler
 import sqlite3
 from datetime import datetime
 
-LOG_DIR = os.path.join(os.path.dirname(__file__), "..", "logs")
+# Ensure path is absolute and normalized
+LOG_DIR = os.environ.get(
+    "LOG_DIR",
+    os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "logs"))
+)
 DB_PATH = os.path.join(LOG_DIR, "logs.db")
 os.makedirs(LOG_DIR, exist_ok=True)
+
 
 class SQLiteHandler(logging.Handler):
     def __init__(self, db_path=DB_PATH):

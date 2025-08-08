@@ -22,8 +22,8 @@ def delete_all_logs():
     print("All logs have been deleted.")
 
 # Example usage:
-#view_logs()          # View logs before deletion
-delete_all_logs()  # Uncomment to delete all logs
+view_logs()          # View logs before deletion
+#delete_all_logs()  # Uncomment to delete all logs
 # view_logs()        # View logs after deletion to confirm
 
 conn.close()

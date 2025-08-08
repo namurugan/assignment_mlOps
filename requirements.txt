@@ -10,3 +10,4 @@ fastapi
 uvicorn
 joblib
 pydantic
+prometheus_client
